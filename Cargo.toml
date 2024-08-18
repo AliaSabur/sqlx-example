@@ -1,0 +1,27 @@
+[package]
+name = "sqlx-example"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = "0.7.5"
+axum-server = "0.7.1"
+anyhow = "1"
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.9"
+sqlx = { version = "0.8.0", features = ["postgres", "runtime-tokio-rustls", "macros"] }
+tokio = { version = "1", features = ["full"] }
+thiserror = "1.0"
+sha2 = "0.10.8"
+serde_json = "1.0.125"
+html-escape = "0.2.1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+static-files = "0.2"
+tower-http = { version = "0.5.2", default-features = false, features = [
+    "cors",
+    "trace",
+] }
+
+[build-dependencies]
+static-files = "0.2"
