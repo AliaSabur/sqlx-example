@@ -88,7 +88,7 @@ pub async fn upload_handler(
         .await?;
 
     Ok(Json(serde_json::json!({
-        "url": format!("/?id={}", id)
+        "url": format!("/index.html?id={}", id)
     })))
 }
 

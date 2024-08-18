@@ -49,7 +49,7 @@ const wrapClass = computed(() => {
 
 const text = computed(() => {
   const value = props.text ?? '';
-  console.log("Rendering text:", value);
+  // console.log("Rendering text:", value);
   const html = marked.parse(value);
   return html;
 });

@@ -10,11 +10,12 @@ onMounted(() => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get('id');
 
-  axios.get('/?id=' + id).then(res => {
-    text.value = res.data.text
-  })
-
-  text.value = testText.value
+  axios.get('/get?id=' + id).then(res => {
+    text.value = res.data.text ?? testText.value;
+    testText.value = res.data.text ?? testText.value;
+  }).catch(() => {
+    text.value = testText.value;
+  });
 })
 
 // 这里可以测试发送写入markdown文本的请求

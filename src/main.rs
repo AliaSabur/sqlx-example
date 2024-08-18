@@ -1,5 +1,5 @@
 use axum::{
-    routing::{get, post}, Router
+    response::Redirect, routing::{get, post}, Router
 };
 use tower_http::{
     cors::{AllowHeaders, AllowMethods, AllowOrigin, CorsLayer},
@@ -60,6 +60,7 @@ async fn main() -> Result<()> {
         )
         .route("/upload", post(handlers::upload_handler))
         .route("/get", get(handlers::get_handler))
+        .route("/", get(Redirect::temporary("/index.html")))
         .route("/*path", get(handlers::get_static_resource))
         .with_state(pool);
 
